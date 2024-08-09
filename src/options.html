@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="options-styles.css">
+  <title>ExcluSite - Options</title>
+  <style>
+  @font-face {
+    font-family: 'Roboto Flex';
+    src: url('fonts/RobotoFlex-Regular.woff2') format('woff2'),
+        url('fonts/RobotoFlex-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Regular.woff2') format('woff2'),
+      url('fonts/Roboto-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Medium.woff2') format('woff2'),
+      url('fonts/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Bold.woff2') format('woff2'),
+      url('fonts/Roboto-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    min-width: 90vw;    
+    padding: auto;
+    flex-direction: column;
+    line-height: 1.6;
+    align-items: center;
+    min-height: 80vh;
+    background-color: black;
+    background-size: 100% 3px;
+    box-shadow: inset 0 8px 8px rgba(0,0,0,0.2);
+    width: 90vw;
+} body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  }
+#Blacklist {
+  position: absolute;
+  background-color: #D3D3D3;
+  padding: 2.2% 4.7% 1.5%;
+    top: 2%;
+  width: 25vw;
+    left: 0%;
+
+    border-left: 3px solid #7f9db9;
+    border-radius: 3px;
+    box-shadow: inset 2px 2px 2px #ffffff, inset -2px -2px 2px #0a246a;
+
+  }
+textarea,
+  input[id="website"] {
+  color: #000000;
+  line-height: 1.5;
+  width: 90%; 
+  height: 30px;
+
+  border: 1px solid #D4D0C8;
+  box-shadow: 1px 1px 0px #FFFFFF, 2px 2px 0px #D4D0C8, -1px -1px 0px #808080;
+  } textarea {
+  line-height: 1.5;
+  width: 82%;
+  min-height: 240px;
+  max-height: 450px;
+  font-family: 'Consolas', 'Courier New', Courier, monospace;
+  font-size: 15px;
+
+  padding: 5px 5px;
+  margin-bottom: 5.5px;
+  margin-top: 5.5px;
+  background-color: #333;
+  color: white;
+  resize: none;
+} h2 {
+  color: rgb(122,161,230);
+}
+.sidebar {
+  position: fixed;
+  top: 2%;
+  right: 0;
+  width: 8vw;
+  height: 85vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 1.5vh;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #0a246a;
+    border-radius: 3px;
+    box-shadow: inset 2px 2px 2px #ffffff, inset -2px -2px 2px #0a246a;
+  }
+.sidebar .tab {
+background: none;
+border: none;
+text-align: center;
+padding: 10px;
+width: 100%;
+transition: background 0.3s;
+color: #2196F3;
+font-size: 24px;
+
+  border: 2px solid #0a246a;
+  border-radius: 4px;
+  box-shadow: inset 2px 2px 2px #ffffff, inset -2px -2px 2px #0a246a;
+  margin-bottom: 10px; /* Add more space between the icons */
+}
+.sidebar .tab.active {
+  background: #e1e1e1;
+
+  transform: translateY(2px);
+  border: 2px solid #0a246a;
+  border-radius: 3px;
+  box-shadow: inset 2px 2px 2px #ffffff, inset -2px -2px 2px #0a246a;
+}
+.sidebar .tab:hover {
+background: #eaeaeae7;
+}
+.tab-content {
+position: absolute;
+right: 10%;
+width: 40%;
+height: 84%;
+overflow-y: auto;
+background-color: #333333ee;
+padding: 15px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}.switch {
+position: relative;
+display: inline-block;
+width: 2.5em;
+  height: 1.55em;
+  margin-top: 0.4rem;
+}
+
+.switch input { 
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 1.25em;
+  width: 1.25em;
+  left: 0.25em;
+  bottom: 0.125em;
+background-color: white;
+border-radius: 50%;
+transition: .4s;
+}
+
+.switch input:checked + .slider {
+background-color: #2196F3;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(0.8em); 
+}
+
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+.switch-label {
+  margin-left: 0.75rem;
+margin-bottom: 0.2rem;
+  font-weight: bold; 
+  font-size: 1.2rem;
+  color: #7aa1e6;
+}
+
+.info-switch-container {
+display: flex;
+align-items: center;
+overflow: visible;
+margin-top: 0.5rem;
+}
+.switch-container {
+display: flex;
+align-items: center;
+}
+#sidebarArea {
+  margin-top: 10px;
+}
+.material-symbols-outlined {
+  fill: #008cff;
+  margin-right: 10px;
+  margin-bottom: 3px;
+  padding-left: 5px;
+}
+.description-container {
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  font-size: 1rem;
+  color: grey;
+  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+#settings {
+font-family:'Roboto Flex', sans-serif;
+display: flex;
+align-items: center;
+background-color: #333333de;
+font-weight: 700;
+}
+#settingsButton {
+  padding: 0.2rem;
+}
+
+#faqButton {
+  padding: 0.5rem;
+}
+
+details summary {
+  color: #00a67d;
+}
+
+details p {
+  color: rgb(173,37,94);
+  font-weight: 500;
+  margin: 5px;
+  padding: 10px;
+  font-style: normal;
+}
+
+#faq details summary {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#faq details {
+  border: 2px solid #333;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  padding: 5px;
+  background: linear-gradient(to bottom, #3c3b37 0%,rgb(56,19,32) 100%);
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+#faqButton{
+font-size: 35px;
+}
+
+input[type="image"] {
+  width: 140px;
+  height: 50px;
+}
+.paypal-button {
+    background-color: #FFA200;
+    color: rgb(235, 230, 220);
+    font-weight: bold;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.paypal-button:hover {
+    background-color: #ffa200f1;
+    color: rgb(218, 255, 211);
+}
+
+#feedback form textarea {
+    color: white;
+    font-family: 'roboto';
+}
+#feedback{
+  color: rgb(122,161,230);
+}
+
+#donate {
+  text-align: center;
+  order: 3;
+  align-self: flex-end;
+  margin-top: auto;
+  color: rgb(219,237,245);
+}
+.donate {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: transparent;
+  color: rgb(26, 255, 128);
+}
+</style>
+</head>
+<body>
+  <div id="sidebarArea">
+    <div class="sidebar" style="border: none;">
+      <button class="tab" id="settingsButton">
+        <img src="images/gear.png" alt="Gear" style="width:65px;height:65px;">
+      </button>
+      <button class="tab" id="faqButton">
+        <img src="images/faq.png" alt="Faq" style="width:53px;height:51px;">
+      </button>
+      <button class="tab" id="feedbackButton">
+        <img src="images/feedback.png" alt="Feedback" style="width:50px;height:50px;">
+      </button>
+    </div>
+  
+<div id="settings" class="tab-content page" style="display: none;">
+  <div style="margin-bottom: 2%; color: whitesmoke;">
+    <h1>Configure content filters</h1>
+  </div>
+
+  <div class="switch-container">
+    <label class="switch">
+      <input type="checkbox" id="enableSearchFilter">
+      <span class="slider round"></span>
+  </label>
+  <div class="info-switch-container">
+    <label for="enableSearchFilter" class="switch-label" style="pointer-events: none; font-size: large;"><span>Google Search Results Filtering </span></label>
+    </div>
+  </div>
+  <div class="description-container">
+    <svg class="material-symbols-outlined" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+      <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+  </svg>
+   <p class="description">Enables filtering for Google search results.</p>
+  </div>
+  
+<div class="switch-container">
+  <label class="switch">
+    <input type="checkbox" id="enableSponsoredFilter">
+    <span class="slider round"></span>
+  </label>
+  <div class="info-switch-container">
+    <label for="enableSponsoredFilter" class="switch-label" style="pointer-events: none; font-size: large;"><span>Sponsored Content Filtering </span></label>
+    </div>
+  </div>
+  <div class="description-container">
+    <svg class="material-symbols-outlined" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+      <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+    </svg>
+    <div style="order: 2; align-items: flex-start; flex-direction: column; padding: 5px;">
+    <p class="description">Enables filtering for sponsored content.</p>
+    <div class="description"><strong>Note:</strong> May be redundant if an ad blocker is enabled.</div>
+    </div>
+  </div>
+
+  <hr style="border-top: 1px solid #808080; margin-top: 1%; margin-bottom: 2%;">
+
+  <div class="switch-container">
+    <label class="switch">
+      <input type="checkbox" id="enableLogger">
+      <span class="slider round"></span>
+    </label>
+    <div class="info-switch-container">
+      <label for="enableLogger" class="switch-label" style="pointer-events: none; font-size: large;"><span>Enable Logger Terminal</span></label>
+    </div>
+  </div>
+  <div class="description-container">
+    <svg class="material-symbols-outlined" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+      <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+  </svg>
+  <p class="description"><strong>Note:</strong> Enabling the Logger Terminal may slow down the filtering process.</p>
+</div>
+  
+  <button class="donate" id="donateButton">Donate</button>
+</div>
+
+<div id="faq" class="tab-content page" style="display: none;">
+  <h2>Frequently Asked Questions (FAQ)</h2>
+  <details>
+    <summary>How Does the Blacklisting Feature Work?</summary>
+    <p>Search results and sponsored content are hidden based on the domains in your blacklist. You can add, remove, and edit domains in the blacklist freely.</p>        
+  </details>
+
+  <details>
+    <summary>How Do I Edit the Blacklist?</summary>
+    <p>Click the 'Edit' button, edit the domains in the Blacklist as needed, and click the 'Save' button to apply your changes.</p>
+  </details>
+
+  <details>
+     <summary>What does the Logger Terminal do?</summary>
+      <p>The Terminal in the popup shows real-time updates, including number of filtered search results, the names of filtered results, and the number of filtered sponsored ads.</p>
+  </details>
+  
+  <details>
+    <summary>How Should I Input Websites/Domains?</summary>
+    <p>When adding websites to the blacklist, please follow these guidelines:</p>
+    <ul style="color: rgb(215,154,67);">
+      <li><strong>Domain Format</strong>: Input the domain of the website without the "http://", "https://", or "www." prefixes. For example, use "example.com" instead of "https://www.example.com".</li>
+      <li><strong>No Trailing Slash</strong>: Do not include a trailing slash at the end of the domain. For example, use "example.com" instead of "example.com/".</li>
+      <li><strong>Geovariants</strong>: If a website has different geovariants (like google.com, google.co.uk, google.co.in, etc.), each variant should be added separately to the blacklist. The extension treats each geovariant as a separate domain.</li>
+    </ul>
+  </details>
+  
+  <!-- Your FAQ content goes here -->
+  </div>
+
+<div id="feedback" class="tab-content page" style="display: none;">
+    <h2>Feedback</h2>
+    <p>We appreciate your feedback! Please fill out the form below:</p>
+    <form action="https://formspree.io/f/mbjnyogg" method="POST">
+        <label for="email">Your Email: </label>
+        <input type="email" id="email" name="_replyto"><br>
+        <br>
+        <label for="message">Your Message:</label><br>
+        <textarea id="message" name="message"></textarea><br>
+        <input type="submit" value="Send">
+    </form>
+</div>
+
+<div id="donate" class="tab-content page" style="display: none;">
+  <div id="donate" style="margin-bottom: 20px;">
+  <h2>Donate</h2>
+  <p>If you find this extension helpful and would like to contribute to its development, please consider supporting us by clicking the button below:</p>
+  <form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="hosted_button_id" value="LVGP6ALFX9SZ6" />
+    <button type="submit" class="paypal-button">Donate</button>
+    </form>
+</div>
+<p style="font-style: italic; font-weight: lighter; color: rgb(122,161,230);">If you're unable to contribute financially, sharing the extension helps too.</p>
+</div>
+</div>
+<div id="Blacklist">
+  <div>
+  <input id="website" placeholder="Enter Domain (e.g., example.com)">
+<div>
+  <button id="add">Add to blacklist</button>
+  <button id="remove">Remove from blacklist</button>
+</div>
+  </div>
+
+<div style="text-align: inherit;">
+  <h1>Blacklisted Websites</h1>
+</div>
+<textarea id="blacklistedWebsites" readonly></textarea>
+<div>
+  <div>
+  <button id="edit">Edit</button>
+  <button id="save">Save</button>
+  <button id="clear">Clear blacklist</button>
+  </div>
+  <div class="button-container">
+    <button id="export">Export Blacklist</button>
+    <button id="import">Import Blacklist</button>
+    <input type="file" id="file" style="display: none;">
+</div>
+</div>
+  <div id="alert"></div>
+</div>
+  <script src="options.js"></script>
+</body>
+</html>
