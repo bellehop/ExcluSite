@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @font-face {
+  font-family: 'Inconsolata';
+  src: url('fonts/Inconsolata-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('fonts/Inconsolata-Regular.woff2') format('woff2'),
+       url('fonts/Inconsolata-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (max-width: 600px) {
+  #logger {
+    font-size: 12px;
+  }
+  textarea, input[id="website"] {
+    width: 100%;
+  }
+  html {
+    font-size: 14px;
+  }
+  a {
+  position: absolute;
+  bottom: 0;
+  left: 2;  
+  font-size: small;
+  }
+}
+
+body {
+  min-width: 60vh;
+  max-width: 600px;
+    background-color: #D3D3D3;
+    padding: auto;
+    max-height: 500px;
+    font-size: 1rem;
+    margin-bottom: 10vh;
+ }
+ html {
+  font-size: 16px;
+}
+
+#popup {
+  transition: height 0.6s ease-in-out, width 0.6s ease-in-out, padding 0.6s ease-in-out;
+}
+
+.popup-expanded {
+  width: 600px;
+}
+#toggle-logger {
+    background: transparent;
+    border: none;
+    color: #333;
+    top: 5px;
+}
+button#toggle-logger {
+  margin-right: 1px;
+  box-shadow: none; 
+  border-radius: 0;
+  margin-top: 10px;
+  cursor: pointer;
+  position: inherit;
+}
+button#refresh {
+  box-shadow: none; 
+  border-radius: 0;
+  margin-top: 10px;
+  cursor: pointer;
+  position: inherit;
+  background: transparent;
+  border: none;
+  color: #333;
+  padding: 3px;
+}
+
+#logger {
+  line-height: 1.5;
+  width: 100%;
+  height: 20vh;
+  max-height: 50vh;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-weight: lighter;      
+  font-family: 'Consolas', 'Inconsolata', sans-serif;
+  background-color: rgba(0, 0, 0, 0.952);
+  color: beige;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  text-shadow: 0 0 5px rgba(227, 255, 239, 0.615);
+  box-sizing: border-box;
+  padding: 5px;
+  border: 3px solid #333;
+  border-radius: 10px;
+  box-shadow: inset 5px 5px 10px #000000;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, max-height 0.3s;
+}
+
+#logger.visible {
+  opacity: 1;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.icon-button {
+  flex: 1;
+}
+#logger {
+  scrollbar-width: thin;
+  scrollbar-color: beige #333;
+}
+#yesBtn, #noBtn {
+  display: none;
+}
+#terminal {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  justify-items: end;
+}
+  textarea, input[id="website"] {
+  width: 96.4%;
+  height: 2em;
+  margin-top: 5px;
+  line-height: 1.5;
+  background-color: #FFFFFF;
+  
+  border: 1px solid #D4D0C8;
+  box-shadow: 1px 1px 0px #FFFFFF, 2px 2px 0px #D4D0C8, -1px -1px 0px #808080;
+  
+  color: #000000;  
+}
+  input[id="website"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px #808080;
+}
+  textarea {
+    margin-top: 1px;
+    line-height: 1.5;
+    width: 95%;
+    height: 40vh;
+    max-height: 40.5vh;
+    font-weight: bold;
+    font-family: 'Consolas', 'Inconsolata', 'Courier New', Courier, monospace;
+    background-color: #333;
+    color: white;
+    resize: none;
+    align-items: center;
+    padding: 3px 3px;
+  }
+</style>
+</head>
+<body>
+  <div id="popup">
+<div id="terminal">   
+  <div style="display: flex; flex-direction: row;">
+    <button id="refresh" class="icon-button" style="display: none;" title="Clear"><img src="images/refresh.svg" alt="Refresh"></button>
+    <button id="toggle-logger" class="icon-button" title="Logger Terminal"><img src="images/terminal.svg" alt="Terminal"></button>
+  </div>  
+  <div id="logger" class="hidden"></div>
+</pre> 
+</div>
+<div style="padding: 5px;">
+  <div style="justify-content: center; display: flex; flex-direction: column;">
+    <input type="text" id="website" placeholder="Enter Domain (e.g., example.com)">
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">×</span>
+      <p id="modal-message"></p>
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>  
+  <button id="add">Add to blacklist</button>
+  <button id="remove">Remove from blacklist</button>
+</div>
+<h1>Blacklisted Websites</h1>
+<div style="outline: none;">
+  <textarea id="blacklistedWebsites" readonly></textarea>
+</div>
+</div>
+<div>
+  <a href="options.html" target="_blank" id="options-link"> <img src="images/setting.svg" alt="Settings"></a>
+</div>
+<script src="popup.js" defer></script>
+</body>
+</html>
