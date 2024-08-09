@@ -129,7 +129,6 @@ function createMessageElement(type, stats) {
 
 function handleStatsUpdated(message) {
   let stats = {};
-
   let match = message.match(/Number of filtered search results: (\d+)/);
   if (match) {
     stats.filteredCount = match[1];
