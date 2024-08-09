@@ -1,9 +1,8 @@
-
 {
   "manifest_version": 2,
   "name": "ExcluSite",
   "version": "2.7",
-  "description": "Hide google search results from specified domains",
+  "description": "Hide Google search results from specified domains",
   "permissions": [
     "webNavigation",
     "storage",
